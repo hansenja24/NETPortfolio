@@ -1,10 +1,26 @@
-﻿using System;
-namespace Portfolio.Views.Comment
-{
-	public class Create
-	{
-		public Create()
-		{
-		}
-	}
+﻿@model Portfolio.Models.Comment
+
+@{
+    ViewData["Title"] = "Comment - Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2>Create a new comment</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Author)
+    @Html.EditorFor(model => model.Author)
+
+    @Html.LabelFor(model => model.Note)
+    @Html.EditorFor(model => model.Note)
+
+
+    @Html.HiddenFor(model => model.PostId);
+
+    <br>
+
+    <input type="submit" value="Create" class="btn btn-info" />
+}
+
+@Html.ActionLink("Back to List", "Index")

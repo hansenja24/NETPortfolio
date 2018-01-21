@@ -1,10 +1,23 @@
-﻿using System;
-namespace Portfolio.Views.Comment
-{
-	public class Edit
-	{
-		public Edit()
-		{
-		}
-	}
+﻿@model Portfolio.Models.Comment
+
+@{
+    ViewData["Title"] = "Comment - Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2>Edit</h2>
+<hr />
+<h4>Edit this comment: </h4>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Author)
+    @Html.EditorFor(model => model.Author)
+
+    @Html.LabelFor(model => model.Note)
+    @Html.EditorFor(model => model.Note)
+
+
+    @Html.HiddenFor(model => model.PostId);
+
+    <input type="submit" value="Save" class="btn btn-default" class="btn btn-info"/>
+}
+@Html.ActionLink("Back to List", "Index")

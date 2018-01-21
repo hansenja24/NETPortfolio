@@ -12,38 +12,39 @@ namespace Portfolio.Controllers
 
         public IActionResult Index()
         {
-            return View(db.Reviews.Include(items => items.Products).ToList());
+            return View(db.Comments.Include(items => items.Posts).ToList());
         }
 
         public IActionResult Details(int id)
         {
-            var thisReview = db.Reviews.FirstOrDefault(items => items.ReviewId == id);
-            return View(thisReview);
+            var thisComment = db.Comments.Include(items => items.Posts).ToList().FirstOrDefault(items => items.CommentId == id);
+            return View(thisComment);
         }
 
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
-            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name");
-            return View();
+            var thisComment = db.Comments.FirstOrDefault(items => items.CommentId == id);
+            ViewBag.PostId = new SelectList(db.Posts, "PostId", "Title");
+            return View(thisComment);
         }
 
         [HttpPost]
-        public IActionResult Create(Review item)
+        public IActionResult Create(Comment item)
         {
-            db.Reviews.Add(item);
+            db.Comments.Add(item);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
         public IActionResult Edit(int id)
         {
-            var thisReview = db.Reviews.FirstOrDefault(items => items.ReviewId == id);
-            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name");
-            return View(thisReview);
+            var thisComment = db.Comments.Include(items => items.Posts).FirstOrDefault(items => items.CommentId == id);
+            ViewBag.PostId = new SelectList(db.Posts, "PostId", "Title");
+            return View(thisComment);
         }
 
         [HttpPost]
-        public IActionResult Edit(Review item)
+        public IActionResult Edit(Comment item)
         {
             db.Entry(item).State = EntityState.Modified;
             db.SaveChanges();
@@ -52,15 +53,15 @@ namespace Portfolio.Controllers
 
         public ActionResult Delete(int id)
         {
-            var thisReview = db.Reviews.FirstOrDefault(items => items.ReviewId == id);
-            return View(thisReview);
+            var thisComment = db.Comments.FirstOrDefault(items => items.CommentId == id);
+            return View(thisComment);
         }
 
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            var thisReview = db.Reviews.FirstOrDefault(items => items.ReviewId == id);
-            db.Reviews.Remove(thisReview);
+            var thisComment = db.Comments.FirstOrDefault(items => items.CommentId == id);
+            db.Comments.Remove(thisComment);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,10 +1,16 @@
-﻿using System;
-namespace Portfolio.Views.Comment
-{
-	public class Delete
-	{
-		public Delete()
-		{
-		}
-	}
+﻿@model Portfolio.Models.Comment
+
+@{
+    ViewData["Title"] = "Comment - Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h2>Are you sure you want to delete this?</h2>
+<hr />
+@Html.DisplayNameFor(model => model.Author): @Html.DisplayFor(model => model.Author)
+@Html.DisplayNameFor(model => model.Note): @Html.DisplayFor(model => model.Note)
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" class="btn btn-info"/>
+}
+<p>@Html.ActionLink("Back to list", "Index")</p>

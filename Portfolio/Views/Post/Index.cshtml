@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Portfolio.Models.Post>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Here is your list of posts, @User.Identity.Name</h2>
+
+
+
+<p>@Html.ActionLink("Create New Post", "Create")</p>

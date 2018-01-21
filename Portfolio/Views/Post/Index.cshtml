@@ -8,6 +8,38 @@
 
 <h2>Here is your list of posts, @User.Identity.Name</h2>
 
+ <h4 class="display-post">Click Post</h4>
+ <div id="result"></div>
 
+ <h2>Basic AJAX</h2>
+          <h4 class="hello-ajax">Hello AJAX</h4>
+          <div id="result1"></div>
 
 <p>@Html.ActionLink("Create New Post", "Create")</p>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    
+    $('.display-object').click(function () {
+      $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        url: '@Url.Action("DisplayPost")',
+        success: function (result) {
+          var resultString = result.Title + '<br>' + result.Content;
+          $('#result3').html(resultString);
+        }
+      });
+    });
+    $('.hello-ajax').click(function () {
+      $.ajax({
+        type: 'GET',
+        url: '@Url.Action("HelloAjax")',
+        success: function (result) {
+          $('#result1').html(result);
+        }
+      });
+    });
+  });

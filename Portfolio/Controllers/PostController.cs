@@ -43,5 +43,15 @@ namespace Portfolio.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult DisplayObject()
+        {
+            return Json(_db.Posts.Where(x => x.Id == 1));
+        }
+
+        public IActionResult HelloAjax()
+        {
+            return Content("Hello from the controller!", "text/plain");
+        }
     }
 }

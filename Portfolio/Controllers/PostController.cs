@@ -46,7 +46,7 @@ namespace Portfolio.Controllers
 
         public IActionResult DisplayObject()
         {
-            return Json(_db.Posts.Where(x => x.Id == 1));
+            return Json(_db.Posts.ToList());
         }
 
         public IActionResult HelloAjax()

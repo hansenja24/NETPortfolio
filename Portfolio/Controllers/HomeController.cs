@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using Portfolio.Models;
 
 namespace Portfolio.Controllers
 {
@@ -17,7 +18,9 @@ namespace Portfolio.Controllers
 
         public IActionResult Project()
         {
-            return View();
+            Project project = new Project();
+            var topThree = project.GetTopThreeProjects();
+            return View(topThree);
         }
     }
 }

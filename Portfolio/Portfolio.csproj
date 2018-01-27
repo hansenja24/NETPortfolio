@@ -40,4 +40,7 @@
    <ItemGroup>
      <None Remove="Views\Home\Create.cshtml" />
    </ItemGroup>
+   <ItemGroup>
+     <Content Remove="Views\Home\Project.cshtml" />
+   </ItemGroup>
 </Project>

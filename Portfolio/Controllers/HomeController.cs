@@ -16,11 +16,5 @@ namespace Portfolio.Controllers
             return View();
         }
 
-        public IActionResult Project()
-        {
-            Project project = new Project();
-            var topThree = project.GetTopThreeProjects();
-            return View(topThree);
-        }
     }
 }

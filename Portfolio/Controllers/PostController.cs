@@ -53,5 +53,12 @@ namespace Portfolio.Controllers
         {
             return Content("Hello from the controller!", "text/plain");
         }
+
+        public IActionResult Project()
+        {
+            Project project = new Project();
+            var topThree = project.GetTopThreeProjects();
+            return View(topThree);
+        }
     }
 }

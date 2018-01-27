@@ -10,9 +10,12 @@
 {
     @Html.LabelFor(model => model.Title)
     @Html.EditorFor(model => model.Title)
-
+    <br>
     @Html.LabelFor(model => model.Content)
-    @Html.EditorFor(model => model.Content)
-    <input type="submit" value="Create" />
+    <br>
+    @Html.TextAreaFor(model => model.Content, 
+    new { style = "width: 400px; height: 200px;" })
+    <br>
+    <input type="submit" value="Create" class="btn btn-alert"= />
 }
 @Html.ActionLink("Back to List", "Index")

@@ -8,7 +8,7 @@
   $(document).ready(function() {
     
     $('.display-post').click(function () {
-	console.log("test");
+        $('.display-post').hide();
       $.ajax({
         type: 'GET',
         dataType: 'json',
@@ -19,7 +19,7 @@
         var resultString = "";
 	        result.forEach(function(res)
     	{
-            resultString += res.title + '<br>' + res.content + '<br>';
+            resultString += '<strong>'+res.title+'</strong>' + '<br>' + res.content + '<br>';
     	});
     	   
           $('#result').html(resultString);
